@@ -10,14 +10,16 @@
         android:id="@+id/searchBar"
         style="@style/searchBarVisuals"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_search" />
+            android:id="@+id/searchButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/ic_search"
+            style="@style/buttonVisuals"/>
 
         <EditText
             style="@style/textVisuals"
@@ -28,17 +30,18 @@
             android:background="@null"/>
 
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_mic" />
+            android:id="@+id/searchMic"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_mic"
+            style="@style/buttonVisuals"/>
 
         <ImageView
-            android:id="@+id/menuButton"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_menu" />
+            android:id="@+id/searchMenuButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_menu"
+            style="@style/buttonVisuals"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -47,5 +50,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/searchBar"
         android:scrollbars="vertical"/>
+
+
 
 </RelativeLayout>

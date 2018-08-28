@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private ArrayList<ListItem> listItems;
-    private ImageView menuButton;
+    private ImageView searchMenuButton;
     private int i;
 
     @Override
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        menuButton = findViewById(R.id.menuButton);
-        menuButton.setOnClickListener(new View.OnClickListener() {
+        searchMenuButton = findViewById(R.id.searchMenuButton);
+        searchMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showPopup(view);
@@ -88,16 +88,12 @@ public class MainActivity extends AppCompatActivity {
                 "Information of item: " + (i + 1)
         );
         listItems.add(listItem);
-
-        adapter = new rAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
         i = i + 1;
     }
 
-    private void clearList(){
+    private void clearList() {
         listItems.clear();
-
-        adapter = new rAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
     }
 }

@@ -12,15 +12,19 @@
     <style name="searchBarVisuals">
         <item name="android:background">@drawable/edit_background</item>
         <item name="android:layout_margin">8dp</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:paddingStart">16dp</item>
         <item name="android:elevation">5dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="buttonVisuals">
+        <item name="android:background">@drawable/edit_background</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
     <style name="textVisuals">
         <item name="android:textColor">@color/colorTextBlack</item>
-        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
         <item name="android:textSize">15sp</item>
     </style>
 
