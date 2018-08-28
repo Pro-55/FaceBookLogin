@@ -1,5 +1,7 @@
 package com.example.admin.testlogin;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private ArrayList<ListItem> listItems;
     private ImageView searchMenuButton;
+    private FloatingActionButton floatingAddButton;
+    private final static String TAG = "MainActivity";
     private int i;
 
     @Override
@@ -31,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showPopup(view);
+            }
+        });
+
+        floatingAddButton = findViewById(R.id.floatingAddButton);
+        floatingAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToList();
             }
         });
 
@@ -57,13 +69,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         return true;
 
-                    case R.id.menuHelp:
+                    case R.id.menuLogin:
                         Toast.makeText(MainActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        goToLogin();
                         return true;
 
-                    case R.id.menuAdd:
+                    case R.id.menuRemove:
                         Toast.makeText(MainActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
-                        addToList();
+                        removeLast();
                         return true;
 
                     case R.id.menuClear:
@@ -75,10 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         return true;
                 }
-
             }
         });
-
         popupMenu.show();
     }
 
@@ -95,5 +106,21 @@ public class MainActivity extends AppCompatActivity {
     private void clearList() {
         listItems.clear();
         recyclerView.setAdapter(adapter);
+        i = 0;
+    }
+
+    private void removeLast() {
+        if (i != 0) {
+            listItems.remove(i - 1);
+            recyclerView.setAdapter(adapter);
+            i = i - 1;
+        } else {
+            Toast.makeText(MainActivity.this, "Welp!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void goToLogin() {
+        Intent loginIntent = new Intent(MainActivity.this, SecondActivity.LoginActivity.class);
+        startActivity(loginIntent);
     }
 }

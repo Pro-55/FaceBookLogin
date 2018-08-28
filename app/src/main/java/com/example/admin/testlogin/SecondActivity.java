@@ -22,4 +22,13 @@ public class SecondActivity extends AppCompatActivity {
         headSecond.setText(Head);
         infoSecond.setText(Info);
     }
+
+    public static class LoginActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_login);
+        }
+    }
 }

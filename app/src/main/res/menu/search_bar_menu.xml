@@ -6,12 +6,12 @@
         android:title="@string/settings"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/menuHelp"
-        android:title="@string/help"
+    <item android:id="@+id/menuLogin"
+        android:title="@string/login"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/menuAdd"
-        android:title="@string/add"
+    <item android:id="@+id/menuRemove"
+        android:title="@string/remove"
         app:showAsAction="never"/>
 
     <item android:id="@+id/menuClear"
