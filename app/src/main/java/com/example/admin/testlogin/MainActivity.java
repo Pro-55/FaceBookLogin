@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private ArrayList<ListItem> listItems;
-    private ImageView searchMenuButton;
+    private ImageView searchMenuButton, searchMic;
     private FloatingActionButton floatingAddButton;
     private final static String TAG = "MainActivity";
     private int i;
@@ -46,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        searchMic = findViewById(R.id.searchMic);
+        searchMic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, R.string.feature_not_available, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -67,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.menuSettings:
                         Toast.makeText(MainActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        goToSettings();
                         return true;
 
                     case R.id.menuLogin:
@@ -120,7 +129,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goToLogin() {
-        Intent loginIntent = new Intent(MainActivity.this, SecondActivity.LoginActivity.class);
+        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(loginIntent);
+    }
+
+    private void goToSettings() {
+        Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(settingsIntent);
     }
 }

@@ -5,4 +5,7 @@
     <string name="login">Login</string>
     <string name="clear">Clear</string>
     <string name="remove">Remove</string>
+    <string name="switch_one_text">Switch One</string>
+    <string name="switch_two_text">Switch Two</string>
+    <string name="feature_not_available">Feature Not Available Yet!</string>
 </resources>

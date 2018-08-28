@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorTextWhite"
     android:padding="8dp"
     tools:context=".SecondActivity">
 
@@ -19,6 +20,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_margin="8dp"
         android:background="@color/colorAccent" />
 
     <TextView

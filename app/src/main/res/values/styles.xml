@@ -32,6 +32,24 @@
         <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="textHeadVisuals">
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="elementVisuals">
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="switchVisuals">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
     </style>
 
 </resources>
