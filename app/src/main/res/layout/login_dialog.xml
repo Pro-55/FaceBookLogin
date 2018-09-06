@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/loginHeadText"
+        style="@style/textVisuals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/login_head_text" />
+
+    <Button
+        android:id="@+id/buttonLoginFB"
+        style="@style/buttonFBLoginVisuals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_fb_button_text" />
+
+    <Button
+        android:id="@+id/buttonLoginTwitter"
+        style="@style/buttonTwitterLoginVisuals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_twitter_button_text" />
+
+    <Button
+        android:id="@+id/buttonLoginGoogle"
+        style="@style/buttonGoogleLoginVisuals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_google_button_text" />
+
+</LinearLayout>

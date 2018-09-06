@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FaceBook Login</string>
+    <string name="app_name">Login Test</string>
     <string name="search_hint">Search</string>
     <string name="settings">Settings</string>
     <string name="login">Login</string>
@@ -7,5 +7,9 @@
     <string name="remove">Remove</string>
     <string name="switch_one_text">Switch One</string>
     <string name="switch_two_text">Switch Two</string>
+    <string name="login_fb_button_text">Continue with FaceBook</string>
+    <string name="login_twitter_button_text">Continue with Twitter</string>
+    <string name="login_google_button_text">Continue with Google</string>
     <string name="feature_not_available">Feature Not Available Yet!</string>
+    <string name="login_head_text">Login With</string>
 </resources>

@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorTextWhite"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="8dp"
     tools:context="com.example.admin.testlogin.SettingsActivity">
 
     <TextView
@@ -18,25 +19,31 @@
         style="@style/elementVisuals"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1">
 
         <Switch
             android:id="@+id/switchOne"
             style="@style/switchVisuals"
-            android:text="@string/switch_one_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:text="@string/switch_one_text" />
 
         <Switch
             android:id="@+id/switchTwo"
             style="@style/switchVisuals"
-            android:text="@string/switch_two_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:text="@string/switch_two_text" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonLogin"
+        style="@style/buttonLoginVisuals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login" />
 
     <View
         android:layout_width="match_parent"
