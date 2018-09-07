@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/loginHeadText"
-        style="@style/textVisuals"
+        style="@style/textDialogVisuals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

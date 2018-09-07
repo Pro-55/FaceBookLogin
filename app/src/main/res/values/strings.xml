@@ -11,5 +11,5 @@
     <string name="login_twitter_button_text">Continue with Twitter</string>
     <string name="login_google_button_text">Continue with Google</string>
     <string name="feature_not_available">Feature Not Available Yet!</string>
-    <string name="login_head_text">Login With</string>
+    <string name="login_head_text">Login With:</string>
 </resources>
