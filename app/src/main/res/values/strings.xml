@@ -12,4 +12,6 @@
     <string name="login_google_button_text">Continue with Google</string>
     <string name="feature_not_available">Feature Not Available Yet!</string>
     <string name="login_head_text">Login With:</string>
+    <string name="facebook_app_id">1079756275507889</string>
+    <string name="fb_login_protocol_scheme">fb1079756275507889</string>
 </resources>

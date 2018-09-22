@@ -11,6 +11,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
 public class SettingsActivity extends AppCompatActivity {
 
     private TextView versionText;
@@ -18,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button buttonLogin, buttonLoginFB, buttonLoginTwitter, buttonLoginGoogle;
     private AlertDialog.Builder mBuilder;
     private AlertDialog alertDialog;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +91,27 @@ public class SettingsActivity extends AppCompatActivity {
         buttonLoginFB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                callbackManager = CallbackManager.Factory.create();
+
+                LoginManager.getInstance().registerCallback(callbackManager,
+                        new FacebookCallback<LoginResult>() {
+                            @Override
+                            public void onSuccess(LoginResult loginResult) {
+                                // App code
+                            }
+
+                            @Override
+                            public void onCancel() {
+                                // App code
+                            }
+
+                            @Override
+                            public void onError(FacebookException exception) {
+                                // App code
+                            }
+                        });
+
                 goToLogin();
             }
         });
@@ -97,5 +127,12 @@ public class SettingsActivity extends AppCompatActivity {
         mBuilder.setView(view);
         alertDialog = mBuilder.create();
         alertDialog.show();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
