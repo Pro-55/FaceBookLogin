@@ -12,12 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
-
-import com.facebook.AccessToken;
-import com.facebook.login.LoginManager;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,15 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new rAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
-
-
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-
-
-        if (!isLoggedIn) {
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-        }
     }
 
     private void showPopup(View view) {
