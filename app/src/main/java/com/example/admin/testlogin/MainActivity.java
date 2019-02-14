@@ -1,25 +1,31 @@
 package com.example.admin.testlogin;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private LinearLayout searchBar;
     private ArrayList<ListItem> listItems;
-    private ImageView searchMenuButton, searchMic;
+    private ImageView searchMenuButton, searchMic, searchButton;
     private FloatingActionButton floatingAddButton;
     private final static String TAG = "MainActivity";
     private int i;
@@ -28,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        searchBar = findViewById(R.id.searchBar);
+
+        searchButton = findViewById(R.id.searchButton);
 
         searchMenuButton = findViewById(R.id.searchMenuButton);
         searchMenuButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +71,28 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new rAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
+
+        final TapTargetSequence tapTargetSequence = new TapTargetSequence(this)
+                .targets(TapTarget.forView(floatingAddButton, "Add a row!", "Just Click Me to add a row, it's that simple!").id(1).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorBurgerKingYellow),
+                        TapTarget.forView(searchBar, "Search anything!", "Find what you are lookin' for...").id(2).tintTarget(false).targetCircleColor(R.color.colorPrimaryDark).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorPrimaryDark),
+                        TapTarget.forView(searchButton, "Tap Me", "Look closer...").id(3).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorTwitterBlue),
+                        TapTarget.forView(searchMenuButton, "Click", "And get more Options.").id(4).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorFacebookBlue),
+                        TapTarget.forView(searchMic, "Say what you want!", "Just tap me...").id(5).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorAccent))
+                .continueOnCancel(true)
+                .listener(new TapTargetSequence.Listener() {
+                    @Override
+                    public void onSequenceFinish() {
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                    }
+                });
+        tapTargetSequence.start();
     }
 
     private void showPopup(View view) {
