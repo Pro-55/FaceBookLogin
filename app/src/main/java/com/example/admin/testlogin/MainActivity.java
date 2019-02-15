@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,20 +75,35 @@ public class MainActivity extends AppCompatActivity {
         adapter = new rAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
 
+        explainUI();
+    }
+
+    private void explainUI() {
+        final List<View> targetViewList = Arrays.asList(floatingAddButton, searchBar, searchButton, searchMenuButton, searchMic);
+
         final TapTargetSequence tapTargetSequence = new TapTargetSequence(this)
-                .targets(TapTarget.forView(floatingAddButton, "Add a row!", "Just Click Me to add a row, it's that simple!").id(1).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorBurgerKingYellow),
-                        TapTarget.forView(searchBar, "Search anything!", "Find what you are lookin' for...").id(2).tintTarget(false).targetCircleColor(R.color.colorPrimaryDark).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorPrimaryDark),
-                        TapTarget.forView(searchButton, "Tap Me", "Look closer...").id(3).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorTwitterBlue),
-                        TapTarget.forView(searchMenuButton, "Click", "And get more Options.").id(4).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorFacebookBlue),
-                        TapTarget.forView(searchMic, "Say what you want!", "Just tap me...").id(5).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorAccent))
+                .targets(TapTarget.forView(targetViewList.get(0), "Add a row!", "Just Click Me to add a row, it's that simple!").id(1).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorBurgerKingYellow),
+                        TapTarget.forView(targetViewList.get(1), "Search anything!", "Find what you are lookin' for...").id(2).tintTarget(false).targetCircleColor(R.color.colorPrimaryDark).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorPrimaryDark),
+                        TapTarget.forView(targetViewList.get(2), "Tap Me", "Look closer...").id(3).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorTwitterBlue),
+                        TapTarget.forView(targetViewList.get(3), "Click", "And get more Options.").id(4).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorFacebookBlue),
+                        TapTarget.forView(targetViewList.get(4), "Say what you want!", "Just tap me...").id(5).tintTarget(false).outerCircleAlpha(1.0f).outerCircleColor(R.color.colorAccent))
+                .considerOuterCircleCanceled(true)
                 .continueOnCancel(true)
                 .listener(new TapTargetSequence.Listener() {
                     @Override
                     public void onSequenceFinish() {
+                        targetViewList.get(0).performClick();
                     }
 
                     @Override
                     public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+                        int lastTargetId = lastTarget.id();
+                        int currentTargetId = lastTargetId + 1;
+                        int targetListSize = targetViewList.size();
+
+                        if (currentTargetId != 2 && lastTargetId != targetListSize) {
+                            targetViewList.get(lastTargetId).performClick();
+                        }
                     }
 
                     @Override
@@ -122,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menuClear:
                         Toast.makeText(MainActivity.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         clearList();
+                        return true;
+
+                    case R.id.menuGoAgain:
+                        explainUI();
                         return true;
 
                     default:

@@ -18,4 +18,8 @@
         android:title="@string/clear"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/menuGoAgain"
+        android:title="@string/go_again"
+        app:showAsAction="never"/>
+
 </menu>
