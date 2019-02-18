@@ -1,7 +1,9 @@
 package com.example.admin.testlogin;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements rAdapterInterface {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         listItems = new ArrayList<>();
 
-        adapter = new rAdapter(listItems, this);
+        adapter = new rAdapter(listItems, this, this);
         recyclerView.setAdapter(adapter);
 
         explainUI();
@@ -189,5 +191,12 @@ public class MainActivity extends AppCompatActivity {
     private void goToSettings() {
         Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(settingsIntent);
+    }
+
+    @Override
+    public void scrollToPosition(int position) {
+//        recyclerView.smoothScrollToPosition(position);
+            recyclerView.stopScroll();
+//        recyclerView.scrollToPosition(position);
     }
 }
